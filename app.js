@@ -20,13 +20,7 @@ app.use(initializePassport) // connect Passport to Express
 app.use(cors()) // allow CORS
 
 // connect to MongoDB
-mongoose.connect('mongodb://localhost/bookmarks', (err) => {
-  if (err) {
-    console.log('Error connecting to database', err)
-  } else {
-    console.log('Connected to database!')
-  }
-});
+
 
 // routes
 app.use('/auth', require('./routes/auth'))
