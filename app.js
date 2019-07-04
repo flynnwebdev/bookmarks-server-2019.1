@@ -6,7 +6,9 @@ const morgan = require('morgan')
 const cors = require('cors')
 
 // import custom middleware
-const { initializePassport,requireJwt } = require('./middleware/auth')
+const {
+  initializePassport
+} = require('./middleware/auth')
 
 // new express server + plug in middleware
 const app = express()
@@ -26,7 +28,7 @@ mongoose.connect('mongodb://localhost/bookmarks', (err) => {
 
 // routes
 app.use('/auth', require('./routes/auth'))
-app.use('/bookmarks', requireJwt, require('./routes/bookmarks'))
+app.use('/bookmarks', require('./routes/bookmarks'))
 
 // start the server!
 app.listen(3000, () => console.log('Listening on http://localhost:3000'))
