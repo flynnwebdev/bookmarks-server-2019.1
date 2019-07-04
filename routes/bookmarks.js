@@ -32,10 +32,6 @@ router.post('/', (req, res) => {
 // DELETE /bookmarks/:id
 router.delete('/:id', (req, res) => {
   const id = req.params.id
-  const {
-    title,
-    url
-  } = req.body
   Bookmark.findByIdAndRemove(id)
     .then(() => res.send(200))
     .catch(error => res.status(500).send({

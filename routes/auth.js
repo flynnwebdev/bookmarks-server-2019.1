@@ -3,12 +3,11 @@ const User = require('../models/user');
 const passport = require('passport');
 const router = express.Router();
 const {
-    login
+    login,
+    signJwtForUser
 } = require('../middleware/auth')
 
-router.post('/login', login, (req, res) => {
-    res.json(req.user.email)
-})
+router.post('/login', login, signJwtForUser)
 
 router.get('/logout', (req, res) => {
     req.logout();
