@@ -5,6 +5,8 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 const cors = require('cors')
 
+require('dotenv').config()
+
 // import custom middleware
 const {
   initializePassport
@@ -18,7 +20,7 @@ app.use(initializePassport) // connect Passport to Express
 app.use(cors()) // allow CORS
 
 // connect to MongoDB
-mongoose.connect('mongodb://localhost/bookmarks', (err) => {
+mongoose.connect(process.env.DB_PATH, (err) => {
   if (err) {
     console.log('Error connecting to database', err)
   } else {
@@ -31,4 +33,4 @@ app.use('/auth', require('./routes/auth'))
 app.use('/bookmarks', require('./routes/bookmarks'))
 
 // start the server!
-app.listen(3000, () => console.log('Listening on http://localhost:3000'))
+app.listen(4000, () => console.log('Listening on http://localhost:4000'))
