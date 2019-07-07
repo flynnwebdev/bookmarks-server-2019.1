@@ -20,7 +20,7 @@ app.use(initializePassport) // connect Passport to Express
 app.use(cors()) // allow CORS
 
 // connect to MongoDB
-mongoose.connect(process.env.DB_PATH, (err) => {
+mongoose.connect(process.env.DB_PATH, { useNewUrlParser: true }, (err) => {
   if (err) {
     console.log('Error connecting to database', err)
   } else {
@@ -33,4 +33,4 @@ app.use('/auth', require('./routes/auth'))
 app.use('/bookmarks', require('./routes/bookmarks'))
 
 // start the server!
-app.listen(4000, () => console.log('Listening on http://localhost:4000'))
+app.listen(3000, () => console.log('Listening on http://localhost:3000'))
