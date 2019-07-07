@@ -33,4 +33,4 @@ app.use('/auth', require('./routes/auth'))
 app.use('/bookmarks', require('./routes/bookmarks'))
 
 // start the server!
-app.listen(3000, () => console.log('Listening on http://localhost:3000'))
+app.listen(process.env.PORT || 4000, () => console.log('Listening on http://localhost:4000'))
